@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-color_transfer"
+description = "Implementation of color transfer using KMeans algorithm"
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/45uee/ComfyUI-Color_Transfer"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Color_Transfer"
+Icon = ""
