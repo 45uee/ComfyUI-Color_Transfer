@@ -1,7 +1,6 @@
 # ComfyUI-Color_Transfer
 
-Implementation of color transfer using KMeans algorithm
-
+Postprocessing nodes for color changing palette of generated image
 ## Installation
 
 Clone repo to your custom_nodes folder
