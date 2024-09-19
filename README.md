@@ -1,6 +1,6 @@
 # ComfyUI-Color_Transfer
 
-Implementation of color transfer using KMeans algorithm
+Postprocessing nodes that implement color palette transfer in images. It replaces the dominant colors in an image with a target color palette.
 
 ## Installation
 
@@ -14,4 +14,4 @@ Clone repo to your custom_nodes folder
 
 ## Example
 
-![alt text](https://github.com/45uee/ComfyUI-Color_Transfer/blob/main/color_transfer_example.JPG)
+![alt text](https://github.com/45uee/ComfyUI-Color_Transfer/blob/main/color_transfer_example.png)
