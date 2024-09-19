@@ -1,6 +1,7 @@
 # ComfyUI-Color_Transfer
 
-Postprocessing nodes for color palette changing and transfer of generated image
+Postprocessing nodes that implement color palette transfer in images. It replaces the dominant colors in an image with a target color palette.
+
 ## Installation
 
 Clone repo to your custom_nodes folder
