@@ -4,12 +4,12 @@ import torch
 import ast
 
 
-def EuclideanDistance(current_colors, target_colors):
-    return np.linalg.norm(current_colors - target_colors, axis=1)
+def EuclideanDistance(detected_colors, target_colors):
+    return np.linalg.norm(detected_colors - target_colors, axis=1)
 
 
-def ManhattanDistance(current_colors, target_colors):
-    return np.sum(np.abs(current_colors - target_colors), axis=1)
+def ManhattanDistance(detected_colors, target_colors):
+    return np.sum(np.abs(detected_colors - target_colors), axis=1)
 
 
 def ColorClustering(image, k, cluster_method):
@@ -20,14 +20,14 @@ def ColorClustering(image, k, cluster_method):
     "Mini batch Kmeans": MiniBatchKMeans
     }
 
-    kmeans = cluster_methods.get(cluster_method)(n_clusters=k)
+    clustering_model = cluster_methods.get(cluster_method)(n_clusters=k, n_init='auto')
 
-    kmeans.fit(img_array)
-    main_colors = kmeans.cluster_centers_
-    return image, main_colors.astype(int), kmeans
+    clustering_model.fit(img_array)
+    main_colors = clustering_model.cluster_centers_
+    return image, main_colors.astype(int), clustering_model
 
 
-def SwitchColors(image, current_colors, target_colors, kmeans, distance_method):
+def SwitchColors(image, detected_colors, target_colors, clustering_model, distance_method):
     closest_colors = []
 
     distance_methods = {
@@ -37,17 +37,18 @@ def SwitchColors(image, current_colors, target_colors, kmeans, distance_method):
 
     distance_method = distance_methods.get(distance_method)
 
-    for color in current_colors:
+    for color in detected_colors:
         distances = distance_method(color, target_colors)
         closest_color = target_colors[np.argmin(distances)]
         closest_colors.append(closest_color)
+
     closest_colors = np.array(closest_colors)
 
-    image = closest_colors[kmeans.labels_].reshape(image.shape)
+    image = closest_colors[clustering_model.labels_].reshape(image.shape)
     image = np.array(image).astype(np.float32) / 255.0
-    image = torch.from_numpy(image)[None,]
+    processedImage = torch.from_numpy(image)[None,]
     
-    return image
+    return processedImage
 
 
 class PaletteTransferNode:
@@ -56,7 +57,7 @@ class PaletteTransferNode:
         data_in = {
             "required": {
                 "image": ("IMAGE",),
-                "colors": ("COLORS",),
+                "target_colors": ("COLORS",),
                 "cluster_method": (["Kmeans","Mini batch Kmeans"], {'default': 'Kmeans'}, ),
                 "distance_method": (["Euclidean", "Manhattan"], {'default': 'Euclidean'}, )
                 }
@@ -68,22 +69,23 @@ class PaletteTransferNode:
     CATEGORY = "Palette Transfer"
 
 
-    def color_transfer(self, image, colors, cluster_method, distance_method):
+    def color_transfer(self, image, target_colors, cluster_method, distance_method):
 
-        if len(colors) == 0:
+        if len(target_colors) == 0:
             return (image,)
-        else:
-            processedImages = []
+        
+        processedImages = []
 
-            for image in image:
-                img = 255. * image.cpu().numpy()
+        for image in image:
+            img = 255. * image.cpu().numpy()
 
-                img, current_colors, kmeans = ColorClustering(img, len(colors), cluster_method)
-                processed = SwitchColors(img, current_colors, colors, kmeans, distance_method)
-                processedImages.append(processed)
-            output = torch.cat(processedImages, dim=0)
+            clustered_img, detected_colors, clustering_model = ColorClustering(img, len(target_colors), cluster_method)
+            processed = SwitchColors(clustered_img, detected_colors, target_colors, clustering_model, distance_method)
+            processedImages.append(processed)
+        
+        output = torch.cat(processedImages, dim=0)
 
-            return (output, )
+        return (output, )
     
 
 class ColorPaletteNode:
@@ -91,7 +93,7 @@ class ColorPaletteNode:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "colors": ("STRING", {'default': '', 'multiline': True})
+                "color_palette": ("STRING", {'default': '', 'multiline': True})
             },
         }
 
@@ -99,5 +101,5 @@ class ColorPaletteNode:
     RETURN_NAMES = ("Color palette", )
     FUNCTION = "color_list"
 
-    def color_list(self, colors):
-        return (ast.literal_eval(colors), )
+    def color_list(self, color_palette):
+        return (ast.literal_eval(color_palette), )
