@@ -1,0 +1,886 @@
+{
+  "id": "59457a40-c7d2-4390-9f07-01ce5d3b80f6",
+  "revision": 0,
+  "last_node_id": 38,
+  "last_link_id": 78,
+  "nodes": [
+    {
+      "id": 26,
+      "type": "LoadImage",
+      "pos": [
+        -42.56291580200195,
+        746.2694702148438
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            44
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "360_F_14894119_v4bqEYTmsztxtIlrHEyaKRuBkbN6oMQZ.webp",
+        "image"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LoadImage",
+      "pos": [
+        -41.83220291137695,
+        1126.92236328125
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            47,
+            62
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "yellow_icon.png",
+        "image"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "LoadImage",
+      "pos": [
+        -91.65433502197266,
+        336.6929931640625
+      ],
+      "size": [
+        362.4837646484375,
+        352.2925720214844
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            43
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "02702-1453193612.png",
+        "image"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "ImageBatch",
+      "pos": [
+        580.4439086914062,
+        745.9865112304688
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 48
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            56,
+            59,
+            66,
+            70,
+            72,
+            74
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "PreviewImage",
+      "pos": [
+        1350.9637451171875,
+        172.0648193359375
+      ],
+      "size": [
+        1472.510009765625,
+        317.8247985839844
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 73
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 35,
+      "type": "PreviewImage",
+      "pos": [
+        1357.0638427734375,
+        -180.43519592285156
+      ],
+      "size": [
+        1472.510009765625,
+        317.8247985839844
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 75
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 36,
+      "type": "PreviewImage",
+      "pos": [
+        1333.7437744140625,
+        939.0889282226562
+      ],
+      "size": [
+        1472.510009765625,
+        317.8247985839844
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 76
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 29,
+      "type": "PaletteTransferReinhard",
+      "pos": [
+        936.725830078125,
+        947.5828247070312
+      ],
+      "size": [
+        191.90390014648438,
+        46
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 59
+        },
+        {
+          "name": "target_colors",
+          "type": "COLOR_LIST",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "68b88335054fca4f82b12d34cde8c6f16283cc41",
+        "Node name for S&R": "PaletteTransferReinhard"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 37,
+      "type": "PreviewImage",
+      "pos": [
+        1341.2269287109375,
+        553.5296020507812
+      ],
+      "size": [
+        1472.510009765625,
+        317.8247985839844
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 77
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 23,
+      "type": "PalleteTransferClustering",
+      "pos": [
+        915.8627319335938,
+        -39.150146484375
+      ],
+      "size": [
+        304.771484375,
+        126
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 56
+        },
+        {
+          "name": "target_colors",
+          "type": "COLOR_LIST",
+          "link": 57
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "08dab8b0691d35783216ccf9d5e65ae043dced51",
+        "Node name for S&R": "PalleteTransferClustering"
+      },
+      "widgets_values": [
+        "Dense",
+        5,
+        0
+      ]
+    },
+    {
+      "id": 33,
+      "type": "PaletteRbfTransfer",
+      "pos": [
+        920.2803955078125,
+        1332.6422119140625
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 70
+        },
+        {
+          "name": "target_colors",
+          "type": "COLOR_LIST",
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            78
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "68b88335054fca4f82b12d34cde8c6f16283cc41",
+        "Node name for S&R": "PaletteRbfTransfer"
+      },
+      "widgets_values": [
+        "gaussian",
+        0.7000000000000001
+      ]
+    },
+    {
+      "id": 38,
+      "type": "PreviewImage",
+      "pos": [
+        1337.157470703125,
+        1334.32080078125
+      ],
+      "size": [
+        1472.510009765625,
+        317.8247985839844
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 78
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 31,
+      "type": "ColorTransferReinhard",
+      "pos": [
+        978.1552734375,
+        1694.1551513671875
+      ],
+      "size": [
+        181.77304077148438,
+        46
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 74
+        },
+        {
+          "name": "image_reference",
+          "type": "IMAGE",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            61
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "68b88335054fca4f82b12d34cde8c6f16283cc41",
+        "Node name for S&R": "ColorTransferReinhard"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 30,
+      "type": "PreviewImage",
+      "pos": [
+        1354.0823974609375,
+        1717.6182861328125
+      ],
+      "size": [
+        1460.6881103515625,
+        326.49432373046875
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 61
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 25,
+      "type": "ImageBatch",
+      "pos": [
+        336.3641357421875,
+        619.2080688476562
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 43
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            48
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 12,
+      "type": "ColorPalette",
+      "pos": [
+        -45.319950103759766,
+        -34.96229553222656
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Color palette",
+          "type": "COLOR_LIST",
+          "links": [
+            54,
+            57,
+            65,
+            68,
+            71
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "08dab8b0691d35783216ccf9d5e65ae043dced51",
+        "Node name for S&R": "ColorPalette",
+        "cnr_id": "ComfyUI-Color_Transfer"
+      },
+      "widgets_values": [
+        "[\n  (255, 0, 0),\n  (103, 58, 183),\n]"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "PalletteSoftTransfer",
+      "pos": [
+        980.4177856445312,
+        558.8236083984375
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 66
+        },
+        {
+          "name": "target_colors",
+          "type": "COLOR_LIST",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            77
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "68b88335054fca4f82b12d34cde8c6f16283cc41",
+        "Node name for S&R": "PalletteSoftTransfer"
+      },
+      "widgets_values": [
+        "Grayscale",
+        0.4,
+        1
+      ]
+    },
+    {
+      "id": 34,
+      "type": "PaletteOptimalTransportTransfer",
+      "pos": [
+        910.7619018554688,
+        171.1381378173828
+      ],
+      "size": [
+        316.4439697265625,
+        150
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 72
+        },
+        {
+          "name": "target_colors",
+          "type": "COLOR_LIST",
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            73
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "stdkoehler/ComfyUI-Color_Transfer",
+        "ver": "68b88335054fca4f82b12d34cde8c6f16283cc41",
+        "Node name for S&R": "PaletteOptimalTransportTransfer"
+      },
+      "widgets_values": [
+        "Dense",
+        5,
+        "Grayscale",
+        0.5
+      ]
+    }
+  ],
+  "links": [
+    [
+      43,
+      20,
+      0,
+      25,
+      0,
+      "IMAGE"
+    ],
+    [
+      44,
+      26,
+      0,
+      25,
+      1,
+      "IMAGE"
+    ],
+    [
+      47,
+      27,
+      0,
+      28,
+      1,
+      "IMAGE"
+    ],
+    [
+      48,
+      25,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      54,
+      12,
+      0,
+      29,
+      1,
+      "COLOR_LIST"
+    ],
+    [
+      56,
+      28,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      57,
+      12,
+      0,
+      23,
+      1,
+      "COLOR_LIST"
+    ],
+    [
+      59,
+      28,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      61,
+      31,
+      0,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      62,
+      27,
+      0,
+      31,
+      1,
+      "IMAGE"
+    ],
+    [
+      65,
+      12,
+      0,
+      32,
+      1,
+      "COLOR_LIST"
+    ],
+    [
+      66,
+      28,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      68,
+      12,
+      0,
+      33,
+      1,
+      "COLOR_LIST"
+    ],
+    [
+      70,
+      28,
+      0,
+      33,
+      0,
+      "IMAGE"
+    ],
+    [
+      71,
+      12,
+      0,
+      34,
+      1,
+      "COLOR_LIST"
+    ],
+    [
+      72,
+      28,
+      0,
+      34,
+      0,
+      "IMAGE"
+    ],
+    [
+      73,
+      34,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      74,
+      28,
+      0,
+      31,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      23,
+      0,
+      35,
+      0,
+      "IMAGE"
+    ],
+    [
+      76,
+      29,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      77,
+      32,
+      0,
+      37,
+      0,
+      "IMAGE"
+    ],
+    [
+      78,
+      33,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        2464.874353627938,
+        249.70144758588646
+      ]
+    },
+    "frontendVersion": "1.18.9"
+  },
+  "version": 0.4
+}
