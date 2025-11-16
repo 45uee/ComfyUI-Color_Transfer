@@ -438,7 +438,7 @@ class PaletteOptimalTransportTransfer(ComfyNodeABC):
 
             recolored_image = recolored_pixels.reshape(h, w, 3)
 
-            result_tensor = torch.from_numpy(recolored_image).unsqueeze(0)
+            result_tensor = torch.from_numpy(recolored_image).float().unsqueeze(0)
             processed_images.append(result_tensor)
 
         return (torch.cat(processed_images, dim=0),)
