@@ -836,3 +836,43 @@ class ColorPaletteNode(ComfyNodeABC):
 
     def color_list(self, color_palette: str) -> tuple[list[tuple[int, int, int]]]:
         return (ast.literal_eval(color_palette),)
+
+
+class ExtractPaletteNode(ComfyNodeABC):
+    @classmethod
+    def INPUT_TYPES(cls) -> dict:
+        return {
+            "required": {
+                "image": (IO.IMAGE,),
+                "num_colors": (
+                    IO.INT,
+                    {"default": 5, "min": 1, "max": 50, "step": 1},
+                ),
+                "cluster_method": (
+                    ["Kmeans", "Mini batch Kmeans"],
+                    {"default": "Mini batch Kmeans"},
+                ),
+            },
+        }
+
+    RETURN_TYPES = ("COLOR_LIST",)
+    RETURN_NAMES = ("Color palette",)
+    FUNCTION = "extract_palette"
+    CATEGORY = "Color Transfer/Palette Transfer"
+
+    def extract_palette(
+        self, image: torch.Tensor, num_colors: int, cluster_method: str
+    ) -> tuple[list[tuple[int, int, int]]]:
+        """Extract dominant colors from an image using clustering."""
+        
+        img_tensor = image[0] if len(image.shape) == 4 else image
+        
+        img = (255.0 * img_tensor.cpu().numpy()).astype(np.uint8)
+        
+        clustering_engine = ColorClustering(cluster_method)
+        clustering_result = clustering_engine.cluster_colors(img, num_colors)
+        
+        colors = clustering_result["main_colors"]
+        color_list = [tuple(map(int, color)) for color in colors]
+        
+        return (color_list,)
