@@ -1,4 +1,4 @@
-from .color_transfer import PaletteTransferNode, PalleteTransferClustering, PaletteTransferReinhard, PaletteSoftTransfer, PaletteRbfTransfer, PaletteOptimalTransportTransfer, ReferenceTransferReinhard, ColorPaletteNode
+from .color_transfer import PaletteTransferNode, PalleteTransferClustering, PaletteTransferReinhard, PaletteSoftTransfer, PaletteRbfTransfer, PaletteOptimalTransportTransfer, ReferenceTransferReinhard, ColorPaletteNode, ExtractPaletteNode
 
 
 NODE_CLASS_MAPPINGS = {
@@ -10,6 +10,7 @@ NODE_CLASS_MAPPINGS = {
     "PaletteOptimalTransportTransfer": PaletteOptimalTransportTransfer,
     "ColorTransferReinhard": ReferenceTransferReinhard,
     "ColorPalette": ColorPaletteNode,
+    "ExtractPalette": ExtractPaletteNode
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PaletteTransfer": "Palette Transfer",
