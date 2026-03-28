@@ -14,4 +14,12 @@ NODE_CLASS_MAPPINGS = {
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PaletteTransfer": "Palette Transfer",
+    "PalleteTransferClustering": "Palette Transfer Clustering",
+    "PaletteTransferReinhard": "Palette Transfer Reinhard",
+    "PalletteSoftTransfer": "Palette Soft Transfer",
+    "PaletteRbfTransfer": "Palette RBF Transfer",
+    "PaletteOptimalTransportTransfer": "Palette Optimal Transport Transfer",
+    "ColorTransferReinhard": "Reference Transfer Reinhard",
+    "ColorPalette": "Color Palette",
+    "ExtractPalette": "Extract Palette",
 }

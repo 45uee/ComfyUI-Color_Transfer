@@ -15,31 +15,32 @@ def CosineSimilarity(detected_color, target_colors):
 
 
 def RGBWeightedDistance(detected_color, target_colors):
-    detected_color = np.array(detected_color)
-    target_colors = np.array(target_colors)
+    detected_color = np.array(detected_color, dtype=np.float64)
+    target_colors = np.array(target_colors, dtype=np.float64)
 
     weights = np.array([0.299, 0.587, 0.114])
 
-    weighted_detected_color = np.dot(detected_color, weights)
-    weighted_target_colors = np.dot(target_colors, weights)
-
-    return np.abs(weighted_detected_color - weighted_target_colors)
+    diff = detected_color - target_colors
+    return np.sqrt(np.sum(weights * diff ** 2, axis=1))
 
 
 def RGBWeightedSimilarity(detected_color, target_colors):
-    detected_color = np.array(detected_color)
-    target_colors = np.array(target_colors)
+    detected_color = np.array(detected_color, dtype=np.float64)
+    target_colors = np.array(target_colors, dtype=np.float64)
 
-    weights = np.array([0.299, 0.587, 0.114])
+    weights = np.sqrt(np.array([0.299, 0.587, 0.114]))
 
-    weighted_detected_color = np.dot(detected_color, weights)
-    weighted_target_colors = np.dot(target_colors, weights)
+    weighted_detected = detected_color * weights
+    weighted_targets = target_colors * weights
 
-    dot_products = np.dot(weighted_detected_color, weighted_target_colors)
-    norm1 = np.linalg.norm(weighted_detected_color)
-    norm2 = np.linalg.norm(weighted_target_colors)
+    dot_products = np.dot(weighted_targets, weighted_detected)
+    norm1 = np.linalg.norm(weighted_detected)
+    norm2 = np.linalg.norm(weighted_targets, axis=1)
 
-    return -dot_products / (norm1 * norm2)
+    denom = norm1 * norm2
+    denom = np.maximum(denom, 1e-10)
+
+    return -dot_products / denom
 
 
 def HSVColorSimilarity(detected_color, target_colors):
@@ -63,14 +64,17 @@ def HSVColorSimilarity(detected_color, target_colors):
     v2 = np.vstack([v2_x, v2_y])
     
     dot_products = np.dot(v1, v2)
-    
+
     v1_norm = np.linalg.norm(v1)
     v2_norms = np.linalg.norm(v2, axis=0)
-    
-    similarities = dot_products / (v1_norm * v2_norms)
-    
+
+    denom = v1_norm * v2_norms
+    denom = np.maximum(denom, 1e-10)
+
+    similarities = dot_products / denom
+
     return -similarities
     
 
 def Blur(image, kernel_size):
-    return cv2.medianBlur(image.astype(np.uint8), kernel_size)
+    return cv2.medianBlur(image.astype(np.uint8), kernel_size).astype(np.float32)
